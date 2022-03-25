@@ -30,7 +30,6 @@ public class AccountController {
     public Account getAccount(@PathVariable long id) {
         
         return this.accountService.getAccount(id);
-        
     }
 
     @PostMapping("/account")

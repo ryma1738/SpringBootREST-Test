@@ -1,6 +1,7 @@
 package restfullApiTest.restTest.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,12 @@ public class AccountService {
     }
 
     public Account getAccount(long id) {
-        return this.accountRepo.getById(id);
+       Optional<Account> account = this.accountRepo.findById(id);
+       if (account.isPresent()) {
+           return account.get();
+       } else {
+           return null;
+       }
     }
 
     public Account addAccount(Account account) {
